@@ -8,6 +8,7 @@ import Login from './Components/Login/Login';
 import ManageStudent from './Components/ManageStudent/ManageStudent';
 import PrivateRoute from './Private/PrivateRoute';
 import StudentView from './Components/SetdentsView/StudentView';
+import Edit from './Components/Edit/Edit';
 
 function App() {
 
@@ -33,6 +34,13 @@ function App() {
             element:<StudentView></StudentView>,
             loader:async ({params}) =>{
             return fetch(`http://localhost:5000/students/${params.id}`)
+            }
+          },
+          {
+            path:'/studentsEdit/:id',
+            element:<Edit></Edit>,
+            loader:async ({params}) =>{
+            return fetch(`http://localhost:5000/studentsEdit/${params.id}`)
             }
           },
         ]

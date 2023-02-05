@@ -61,7 +61,7 @@ const ManageStudent = () => {
                                 <td>{student.class}-{student.division}</td>
                                 <td>{student.roll}</td>
                                 <td><button><Link to={`/students/${student?._id}`}><FaEye className='text-2xl hover:text-black'></FaEye></Link></button></td>
-                                <td><button><FaEdit className='text-2xl hover:text-black'></FaEdit></button></td>
+                                <td><button><Link to={`/studentsEdit/${student?._id}`}><FaEdit className='text-2xl hover:text-black'></FaEdit></Link></button></td>
                                 <td><button onClick={() => handleDelete(student._id)}><AiTwotoneDelete className='text-2xl hover:text-black'></AiTwotoneDelete></button></td>
                             </tr>)
                         }
