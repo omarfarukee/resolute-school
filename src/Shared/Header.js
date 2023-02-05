@@ -51,7 +51,7 @@ const Header = () => {
               <Link to='/addStudents'><button onClick={addColor1} className={color1}><span className='flex justify-center items-center'><FaUsers></FaUsers>Add Student</span> </button></Link>
              <Link to='/manage'> <button onClick={addColor2} className={color2}> Manage Student</button></Link>  
              {
-                user?.uid ? <button onClick={handleLogOut} className='btn btn-outline btn-warning mt-3 ml-2'> Log-out</button> 
+                user?.uid ? <button onClick={handleLogOut} className='btn btn-outline w-40 btn-warning mt-3 ml-2'> Log-out</button> 
                 :<Link to='/login'><button onClick={addColor3} className={color3}> Log-in</button></Link> 
              } 
                

@@ -11,7 +11,7 @@ const Navber = () => {
 
                 {
                     user?.uid ? 
-                    <span className='font-bold mr-10 border w-96 p-3 rounded-2xl pl-10'> {user?.photoURL ? <img src={user?.photoURL} className='w-10 rounded-full'/> : <FaUserCircle className='text-2xl mr-2'></FaUserCircle>} {user?.email} 
+                    <span className='font-bold mr-10 border w-96 p-3 rounded-2xl pl-10'> {user?.photoURL ? <img src={user?.photoURL} className='w-9 rounded-full'/> : <FaUserCircle className='text-2xl mr-2'></FaUserCircle>} {user?.email} 
                    </span>:
                     
                  <span className='font-bold mr-10 border w-72 p-3 rounded-2xl pl-20'><FaUserCircle className='text-2xl mr-2'></FaUserCircle> 'user not log-in'</span>

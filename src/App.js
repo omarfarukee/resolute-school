@@ -6,6 +6,8 @@ import { Toaster } from 'react-hot-toast';
 import AddStudent from './Components/AddStudents/AddStudent';
 import Login from './Components/Login/Login';
 import ManageStudent from './Components/ManageStudent/ManageStudent';
+import PrivateRoute from './Private/PrivateRoute';
+import StudentView from './Components/SetdentsView/StudentView';
 
 function App() {
 
@@ -16,7 +18,7 @@ function App() {
         children:[
           {
             path:'/addStudents',
-            element:<AddStudent></AddStudent>
+            element:<PrivateRoute><AddStudent></AddStudent></PrivateRoute> 
           },
           {
             path:'/login',
@@ -24,8 +26,15 @@ function App() {
           },
           {
             path:'/manage',
-            element:<ManageStudent></ManageStudent>
-          }
+            element:<PrivateRoute><ManageStudent></ManageStudent></PrivateRoute> 
+          },
+          {
+            path:'/students/:id',
+            element:<StudentView></StudentView>,
+            loader:async ({params}) =>{
+            return fetch(`http://localhost:5000/students/${params.id}`)
+            }
+          },
         ]
       }
   ])

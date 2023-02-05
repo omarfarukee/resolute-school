@@ -1,20 +1,22 @@
 import React, { useContext } from 'react';
 import { toast } from 'react-hot-toast';
 import { FcGoogle } from 'react-icons/fc';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
 
 
 const Login = () => {
 
     const {signInWithGoogle} = useContext(AuthContext)
-
+    const navigate = useNavigate()
     const handleGoogle = () => {
         signInWithGoogle()
             .then(result => {
                 const user = result.user;
                 console.log(user);
                 toast.success('User Login Successfully')
-                // navigate(from, {replace: true});
+                navigate('/addStudents');
+                
             })
             .catch(error => {
                 console.log(error.message)
