@@ -6,7 +6,7 @@ const StudentView = () => {
     const data = useLoaderData()
     console.log(data)
     return (
-        <div className='items-center border-l w-full flex justify-center mt-10'>
+        <div className='items-center border-l-4 w-full flex justify-center ml-5 mt-10'>
             <p className='font-bold text-2xl'><span className='text-green-400'>' {data[0].firstName} {data[0].lastName}'s '</span>  <br/> information</p> 
             <div className='ml-10'>
                  <div className='border p-3 w-96 rounded-2xl shadow-2xl'>

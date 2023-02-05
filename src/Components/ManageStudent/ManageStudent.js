@@ -11,7 +11,7 @@ const ManageStudent = () => {
     const { data: allStudents = [], refetch} = useQuery({
         queryKey: ['allStudents'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/students`);
+            const res = await fetch(`https://resolute-school-server.vercel.app/students`);
             const data = await res.json();
             return data;
         }  
@@ -20,7 +20,7 @@ const ManageStudent = () => {
     const handleDelete = id =>{
         const proceed = window.confirm('Are you sure, want to delete Student info?')
         if(proceed){
-            fetch( `http://localhost:5000/students/${id}`, {
+            fetch( `https://resolute-school-server.vercel.app/students/${id}`, {
                 method: 'DELETE'
             })
             .then(res => res.json())
@@ -29,18 +29,23 @@ const ManageStudent = () => {
                 if(data.deletedCount > 0) {
                     toast.success('Student info delete successfully done')
                     const remaining = allst.filter(st => st._id !== id)
+
                     setAllst(remaining)
-                    refetch()
                     window.location.reload()
+                    refetch()
+                    
                 }
             })
         }
 }
     return (
-        <div className='border w-full ml-5'>
-            <h1>this is manage student</h1>
+        <div className=' ml-4 border-l-4 w-11/12 mt-10'>
+            <div className='flex justify-center text-2xl font-bold '>
+                <h1>Manage students</h1>
+            </div>
+                
             <div className="overflow-x-auto p-10">
-                <table className="table w-full">
+                <table className="table w-full border">
                     <thead>
                         <tr>
                             <th>Student Photo</th>

@@ -26,6 +26,10 @@ function App() {
             element:<Login></Login>
           },
           {
+            path:'/',
+            element:<PrivateRoute><AddStudent></AddStudent></PrivateRoute> 
+          },
+          {
             path:'/manage',
             element:<PrivateRoute><ManageStudent></ManageStudent></PrivateRoute> 
           },
@@ -33,14 +37,14 @@ function App() {
             path:'/students/:id',
             element:<StudentView></StudentView>,
             loader:async ({params}) =>{
-            return fetch(`http://localhost:5000/students/${params.id}`)
+            return fetch(`https://resolute-school-server.vercel.app/students/${params.id}`)
             }
           },
           {
             path:'/studentsEdit/:id',
             element:<Edit></Edit>,
             loader:async ({params}) =>{
-            return fetch(`http://localhost:5000/studentsEdit/${params.id}`)
+            return fetch(`https://resolute-school-server.vercel.app/studentsEdit/${params.id}`)
             }
           },
         ]

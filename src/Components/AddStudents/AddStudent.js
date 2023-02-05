@@ -1,11 +1,12 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 const AddStudent = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const imageHosKey = '29473dd4ab78ebc95009722bc0558d38';
-    // const navigate = useNavigate()
+    const navigate = useNavigate()
 
     const handleAddItem = (data) => {
         console.log(data)
@@ -42,7 +43,7 @@ const AddStudent = () => {
                     }
 
 
-                    fetch('http://localhost:5000/students', {
+                    fetch('https://resolute-school-server.vercel.app/students', {
 
                         method: 'POST',
                         headers: {
@@ -56,8 +57,8 @@ const AddStudent = () => {
 
                             console.log(result)
                             alert('its can take few moment please wait')
-                            toast.success('added Item successfully')
-                            //  navigate('/')
+                            toast.success('added student successfully')
+                          navigate('/manage')
                         })
 
                 }
@@ -65,8 +66,11 @@ const AddStudent = () => {
     }
 
     return (
-        <div className='border w-full ml-10 mt-5'>
-            <h1>add student</h1>
+        <div className='border-l-4 w-full ml-10 mt-5'>
+            <div className='flex justify-center text-2xl font-bold '>
+                 <h1>add student</h1>
+            </div>
+           
 
             <div className=''>
                 <form onSubmit={handleSubmit(handleAddItem)} className=''>
@@ -97,6 +101,7 @@ const AddStudent = () => {
                                 <label className="label"> <span className="label-text">Choose Class</span></label>
 
                                 <select className="select select-bordered  w-full max-w-xs" {...register("class")}>
+                                <option value="">Select Class</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -116,6 +121,7 @@ const AddStudent = () => {
                                 <label className="label"> <span className="label-text">Choose Division</span></label>
 
                                 <select className="select select-bordered  w-full max-w-xs" {...register("division")}>
+                                <option value="">Select Division</option>
                                     <option value="A">A</option>
                                     <option value="B">B</option>
                                     <option value="C">C</option>
@@ -185,8 +191,8 @@ const AddStudent = () => {
 
                     </div>
 
-                    <div className='flex justify-center'>
-                        <input className='btn btn-success  mt-4 ' value="add this" type="submit" />
+                    <div className='flex justify-center mb-6'>
+                        <input className='btn btn-success  mt-4 ' value="Add student" type="submit" />
                     </div>
 
                 </form>
